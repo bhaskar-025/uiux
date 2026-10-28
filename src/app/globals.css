@@ -1,0 +1,359 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Strict Black and White Palette Tokens */
+:root {
+  /* Surface & Background — Deep Black & Obsidian */
+  --background: #000000;
+  --foreground: #fafafa;
+  --card: #09090b;
+  --card-foreground: #fafafa;
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
+
+  /* Brand / Primary — Pure White with Stark Black Text */
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+
+  /* Secondary & Muted — Charcoal & Zinc Scale */
+  --secondary: #18181b;
+  --secondary-foreground: #fafafa;
+  --accent: #27272a;
+  --accent-foreground: #ffffff;
+
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  /* Borders & Inputs */
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #e4e4e7;
+
+  /* Chart & Data */
+  --chart-1: #ffffff;
+  --chart-2: #d4d4d8;
+  --chart-3: #a1a1aa;
+  --chart-4: #71717a;
+  --chart-5: #3f3f46;
+
+  --radius: 0.5rem;
+
+  /* Sidebar Tokens */
+  --sidebar: #09090b;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #27272a;
+  --sidebar-ring: #ffffff;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #fafafa;
+  --card: #09090b;
+  --card-foreground: #fafafa;
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
+
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+
+  --secondary: #18181b;
+  --secondary-foreground: #fafafa;
+  --accent: #27272a;
+  --accent-foreground: #ffffff;
+
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #e4e4e7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-mono: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    font-size: 16px;
+  }
+
+  body {
+    background-color: #000000;
+    color: #e4e4e7;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 1rem;
+    line-height: 1.625;
+    font-weight: 400;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Single consistent font, no boldness: Clean, sleek, refined typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+  }
+
+  p, li, span, a, input, textarea, button, label {
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+  }
+
+  strong, b {
+    font-weight: 500;
+  }
+}
+
+/* Premium Monochrome Gradients (Black & White Only) */
+.gradient-heading {
+  background: linear-gradient(180deg, #ffffff 0%, #e4e4e7 65%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-card-surface {
+  background: linear-gradient(180deg, rgba(24, 24, 27, 0.7) 0%, rgba(9, 9, 11, 0.95) 100%);
+}
+
+.gradient-radial-hero {
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 40%, rgba(0, 0, 0, 0) 70%);
+}
+
+.gradient-divider-h {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 50%, transparent 100%);
+}
+
+/* Animations & Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  }
+}
+
+@keyframes flowLine {
+  0% {
+    stroke-dashoffset: 40;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes radarSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-flow-line {
+  animation: flowLine 1.6s linear infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-spin-slow {
+  animation: radarSpin 16s linear infinite;
+  transform-origin: center;
+}
+
+/* Shimmer gradient line */
+.shimmer-line {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+/* Clean geometric grid patterns */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.bg-grid-subtle {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Black Moon & Eclipse Glow Effects */
+.radial-moon-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.eclipse-corona {
+  position: relative;
+  border-radius: 9999px;
+  background: #000000;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 0 40px 2px rgba(255, 255, 255, 0.08),
+    inset 0 0 60px 10px rgba(255, 255, 255, 0.03);
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Crisp focus styling */
+:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Completely remove and hide all scrollbars across all browsers */
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+* {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
