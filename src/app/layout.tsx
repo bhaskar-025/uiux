@@ -3,7 +3,11 @@ import { Inter } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
-import { JsonLd, getOrganizationSchema, getWebSiteSchema } from "@/lib/structured-data";
+import {
+  JsonLd,
+  getOrganizationSchema,
+  getWebSiteSchema,
+} from "@/lib/structured-data";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -25,6 +29,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "nyJ1Y1x7kH4uGIga4aH2fYP_qDQyTz0S3KIIufj8hc0",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -35,13 +42,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="min-h-screen bg-black font-sans text-base text-zinc-300 antialiased font-normal">
         <ScrollProgress />
         <JsonLd data={getOrganizationSchema()} />
         <JsonLd data={getWebSiteSchema()} />
+
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
